@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SportsStore.Models;
+using SportsStore.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +10,31 @@ namespace SportsStore.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        private Entities db = new Entities();
+
+        public ActionResult ShowCart()
+        {
+            return RedirectToAction("Index", "Card");
+        }
+
+        public ActionResult Statute()
         {
             return View();
+        }
+
+        public ActionResult Index()
+        {
+            var categories = db.Categories.ToList();
+
+            var products = db.Products.Where(p => !p.Hidden).Take(3).ToList();
+
+            var vm = new HomeViewModel()
+            {
+                Categories = categories,
+                Products = products
+            };
+
+            return View(vm);
         }
 
         public ActionResult About()

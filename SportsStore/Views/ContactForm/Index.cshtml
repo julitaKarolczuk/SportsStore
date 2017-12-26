@@ -1,0 +1,17 @@
+﻿@model SportsStore.Models.ContactForm
+@{
+    ViewBag.Title = "FormularzKontaktowy";
+}
+
+<h2>Formularz kontaktowy</h2>
+
+@using (Html.BeginForm("Send", "ContactForm"))
+{
+    @Html.EditorFor(m => m)
+    <br/>
+    <input type="submit" value="Wyślij"/>
+}
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>

@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    @Html.Action("CategoriesMenu")
+    <div>
+        <div>
+            <img src="@Url.Content("~/Images/homeIcon.png")" />
+        </div>
+         
+        @Html.Partial("_ProductList")
+    </div>
+</div>
+

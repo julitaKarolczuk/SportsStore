@@ -9,6 +9,15 @@ namespace SportsStore.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        // Custom properties
+        public string Address { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        // Custom properties
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

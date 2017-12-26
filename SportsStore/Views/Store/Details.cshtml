@@ -1,0 +1,70 @@
+﻿@model SportsStore.Models.Product
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+<div>
+    @Html.Action("CategoriesMenu")
+</div>
+
+<div>
+    <div id="productlist-rightsection">
+        <div id="breadcrumb-section">
+            <img src="" />
+            <a href="nav">
+                Start > @Model.Category.Name 
+            </a>
+        </div>
+
+
+        <section id="product-details-section">
+            <div id="product-details-left">
+
+                <img src="@Url.Content(Model.Picture)" />
+
+                <div id="product-details-share">
+                    <a href="https://www.facebook.com"></a>
+                    <div></div>
+                    <a href="https:/ /www.twitter.com"></a>
+                </div>
+
+            </div>
+
+            <div id="product-details-right">
+                <div id="product-details-names">
+
+                    <h1>
+                        @Model.Name
+                    </h1>
+
+                    <h2>
+                        @Model.Producer
+                    </h2>
+
+                </div>
+
+                <div id="product-details-price">
+                    <div>
+                        @Model.Price
+                    </div>
+                    <a style="position:absolute; background-color:red" href="@Url.Action("AddToCart","Cart", new { id = Model.Id })">
+                        <img src="@Url.Content("~/Images/cartIcon.png")" alt="Dodaj do koszyka" />
+                    </a>
+
+                </div>
+
+                <div id="product-details-description">
+                    @Model.Description
+                </div>
+
+                <div id="product-details-info">
+                    Bezpłatna przesyłka w ciągu 24h.
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+</div>

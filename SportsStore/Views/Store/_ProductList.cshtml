@@ -1,0 +1,26 @@
+﻿@model IEnumerable<SportsStore.Models.Product>
+
+<div class="productlist-section">
+    <ul>
+        @foreach(var product in Model)
+        {
+            <li>
+                <div>
+
+                    <a style="position:absolute; background-color:red" href="@Url.Action("AddToCart","Cart", new { id = product.Id })">
+                        <img src="@Url.Content("~/Images/cartIcon.png")" alt="Dodaj do koszyka" />
+                    </a>
+                    <div style="width:300px; height:150px; background-color:yellow">
+                        <a href="@Url.Action("Details","Store", new { id = product.Id })">
+                            <img src="@Url.Content(product.Picture)" />
+                            <h5>@product.Producer - @product.Name</h5>
+                            <br/>
+                        </a>
+
+                    </div>
+                    
+                </div>
+            </li>
+        }
+    </ul>
+</div>
