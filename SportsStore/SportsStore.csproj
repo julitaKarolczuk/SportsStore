@@ -192,17 +192,18 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Area\AreaAreaRegistration.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\DbConrtollers\AccountController.cs" />
-    <Compile Include="Controllers\generatedControllers\AspNetUsersController.cs" />
+    <Compile Include="Controllers\AspNetUsersController.cs" />
     <Compile Include="Controllers\CartController.cs" />
-    <Compile Include="Controllers\generatedControllers\CategoriesController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\ContactFormController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\DbConrtollers\ManageController.cs" />
-    <Compile Include="Controllers\generatedControllers\OrdersController.cs" />
-    <Compile Include="Controllers\generatedControllers\Order_ProductController.cs" />
-    <Compile Include="Controllers\generatedControllers\ProductsController.cs" />
-    <Compile Include="Controllers\generatedControllers\SettingsController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\Order_ProductController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -388,6 +389,7 @@
     <Content Include="Views\Store\List.cshtml" />
     <Content Include="Views\Store\Details.cshtml" />
     <Content Include="Views\Cart\AddToCart.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

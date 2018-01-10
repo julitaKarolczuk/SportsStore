@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<a href="@Url.Action("Index","Products")">
+    <div style="background-color:blue; width:200px; height:200px; float: left;" >
+        Zarzadzaj produktami
+    </div>
+</a>
+<a href="@Url.Action("Index","Categories")">
+    <div style="background-color:red; width:200px; height:200px; margin-left:10px; float: left;">
+        Zarzadzaj kategoriami
+    </div>
+</a>
+<a href="@Url.Action("Index","AspNetUsers")">
+    <div style="background-color:yellow; width:200px; height:200px; margin-left:10px; float: left;">
+        Zarzadzaj klientami
+    </div>
+</a>
+<div style="clear:both"></div>

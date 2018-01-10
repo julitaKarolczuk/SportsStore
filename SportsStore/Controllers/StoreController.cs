@@ -29,7 +29,7 @@ namespace SportsStore.Controllers
         public ActionResult List(string categoryname)
         {
             var category = db.Categories.Include("Products").Where(c => c.Name.Equals(categoryname, StringComparison.InvariantCultureIgnoreCase)).Single();
-            var products = category.Products.ToList();
+            var products = category.Products.Where(p => !p.Hidden).ToList();
             return View(products);
         }
 

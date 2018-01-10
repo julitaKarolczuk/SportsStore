@@ -30,14 +30,5 @@ namespace SportsStore.Models
         public virtual AspNetUser AspNetUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order_Product> Order_Product { get; set; }
-
-        /*public enum Status
-        {
-            InProgress,
-
-            Sent,
-
-            Delivered
-        }*/
     }
 }

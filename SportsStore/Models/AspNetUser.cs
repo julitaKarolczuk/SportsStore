@@ -38,6 +38,7 @@ namespace SportsStore.Models
         public string Address { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string Discount { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }

@@ -78,11 +78,18 @@ namespace SportsStore.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,Address,FirstName,LastName")] AspNetUser aspNetUser)
+        public ActionResult Edit([Bind(Include = "Id,Email,PhoneNumber,UserName,Address,FirstName,LastName")] AspNetUser aspNetUser)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(aspNetUser).State = EntityState.Modified;
+               
+                var userToEdit = db.AspNetUsers.Find(aspNetUser.Id);
+                userToEdit.LastName = aspNetUser.LastName;
+                userToEdit.FirstName = aspNetUser.FirstName;
+                userToEdit.Email = aspNetUser.Email;
+                userToEdit.PhoneNumber = aspNetUser.PhoneNumber;
+                userToEdit.UserName = aspNetUser.UserName;
+                userToEdit.Address = aspNetUser.Address;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
