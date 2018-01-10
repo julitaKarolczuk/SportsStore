@@ -12,11 +12,7 @@ namespace SportsStore.Controllers
     {
         private Entities db = new Entities();
 
-        public ActionResult ShowCart()
-        {
-            return RedirectToAction("Index", "Card");
-        }
-
+        
         public ActionResult Statute()
         {
             return View();

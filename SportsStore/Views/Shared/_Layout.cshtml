@@ -5,43 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/Site.css")
+    @Styles.Render("~/Content/MainLayout.css")
     @Scripts.Render("~/bundles/modernizr")
-
+    
 </head> 
 <body>
-    <header>
-        <div class="cardIcon">
-            @Html.ActionLink("Koszyk", "ShowCart", "Home")
-        </div>
-        
-        <div class="logoIcon">
-            <img src="~/Images/logo.png" />
-        </div>
-    </header>
-    <div class="placeholder">
+    <div class="maincontainer">
+        <header>
+            <div class="cartIcon">
+                @Html.ActionLink("Koszyk", "Index", "Cart")
+            </div>
+            <div class="logoIcon">
+                <a href="@Url.Action("Index","Home")">
+                    <img src="~/Images/logo.png" />
+                </a>
+            </div>
+        </header>
+        <div class="placeholder">
             @RenderBody()
+        </div>
+        <footer>
+            <div class="footerMenu">
+                <nav>
+                    <ul class="nav navbar-nav">
+                        <li>
+                            @Html.ActionLink("Kontakt", "Contact", "Home", null)
+                        </li>
+                        <li>
+                            @Html.ActionLink("O nas", "About", "Home", null)
+                        </li>
+                        <li>
+                            @Html.ActionLink("Regulamin", "Statute", "Home", null)
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footerText">
+                &copy; @DateTime.Now.Year - SportsStore
+            </div>
+            <div class="clearboth"></div>
+        </footer>
     </div>
-    <footer span="2">
-        <div class="footerMenu">
-            <nav>
-                <ul class="nav navbar-nav">
-                    <li>
-                        @Html.ActionLink("Kontakt", "Contact", "Home", null)
-                    </li>
-                    <li>
-                        @Html.ActionLink("O nas", "About", "Home", null)
-                    </li>
-                    <li>
-                        @Html.ActionLink("Regulamin", "Statute", "Home", null)
-                    </li>
-                </ul>
-            </nav>
-        </div>
-        <div class="footerText">
-           <p> &copy; @DateTime.Now.Year - SportsStore</p>
-        </div>
-    </footer> 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

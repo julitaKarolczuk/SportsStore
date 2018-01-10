@@ -10,21 +10,13 @@
 </div>
 
 <div>
-    <div id="productlist-rightsection">
-        <div id="breadcrumb-section">
-            <img src="" />
-            <a href="nav">
-                Start > @Model.Category.Name 
-            </a>
-        </div>
-
-
-        <section id="product-details-section">
-            <div id="product-details-left">
+    <div>
+        <section>
+            <div>
 
                 <img src="@Url.Content(Model.Picture)" />
 
-                <div id="product-details-share">
+                <div>
                     <a href="https://www.facebook.com"></a>
                     <div></div>
                     <a href="https:/ /www.twitter.com"></a>
@@ -32,8 +24,8 @@
 
             </div>
 
-            <div id="product-details-right">
-                <div id="product-details-names">
+            <div>
+                <div>
 
                     <h1>
                         @Model.Name
@@ -45,21 +37,21 @@
 
                 </div>
 
-                <div id="product-details-price">
+                <div>
                     <div>
                         @Model.Price
                     </div>
-                    <a style="position:absolute; background-color:red" href="@Url.Action("AddToCart","Cart", new { id = Model.Id })">
+                    <a href="@Url.Action("AddToCart","Cart", new { id = Model.Id })">
                         <img src="@Url.Content("~/Images/cartIcon.png")" alt="Dodaj do koszyka" />
                     </a>
 
                 </div>
 
-                <div id="product-details-description">
+                <div>
                     @Model.Description
                 </div>
 
-                <div id="product-details-info">
+                <div>
                     Bezpłatna przesyłka w ciągu 24h.
                 </div>
             </div>

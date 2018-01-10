@@ -208,10 +208,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastucture\AppConfig.cs" />
-    <Compile Include="Infrastucture\ISessionManager.cs" />
-    <Compile Include="Infrastucture\SessionManager.cs" />
-    <Compile Include="Infrastucture\ShoppingCartManager.cs" />
-    <Compile Include="Infrastucture\UrlHelpers.cs" />
     <Compile Include="Migrations\201712091853312_InitialCreate.cs" />
     <Compile Include="Migrations\201712091853312_InitialCreate.Designer.cs">
       <DependentUpon>201712091853312_InitialCreate.cs</DependentUpon>
@@ -278,10 +274,10 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\MainLayout.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Images\ProductsPic\but1.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\cartIcon.png" />
@@ -390,8 +386,8 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Store\_CategoriesMenu.cshtml" />
     <Content Include="Views\Store\List.cshtml" />
-    <Content Include="Views\Store\_ProductList.cshtml" />
     <Content Include="Views\Store\Details.cshtml" />
+    <Content Include="Views\Cart\AddToCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

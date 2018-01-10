@@ -7,11 +7,34 @@
 <div>
     @Html.Action("CategoriesMenu")
     <div>
-        <div>
-            <img src="@Url.Content("~/Images/homeIcon.png")" />
-        </div>
          
-        @Html.Partial("_ProductList")
+        <section>
+            <ul>
+                @foreach (var product in Model)
+                {
+                    <li>
+                        <article>
+                            <a class="alert-link warning cartLogo" href="@Url.Action("AddToCart", "Cart", new { id = product.Id})">
+                                <img src="~/Images/cartIcon.png" /><br />
+                            </a>
+                            <a class="productImg" href="@Url.Action("Details","Store", new { id = product.Id})">
+                                <div>
+                                    <img src="@Url.Content(product.Picture)">
+
+                                </div>
+                                <h5>
+                                    @product.Producer - @product.Name
+                                </h5>
+                            </a>
+                        </article>
+                    </li>
+                }
+            </ul>
+            <div class="clearboth"></div>
+        </section>
+
+
+        
     </div>
 </div>
 
