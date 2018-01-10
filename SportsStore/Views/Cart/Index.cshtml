@@ -1,4 +1,4 @@
-﻿@using SportsStore.Models
+﻿@model List<SportsStore.Models.CartItem>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -20,43 +20,25 @@
             Cena
         </td>
         <td>
-            button delete
+
         </td>
     </tr>
-    <tr>
-        <td>
-            <img src="~/Images/ProductsPic/but1.png" />
-        </td>
-        <td>
-            574
-        </td>
-        <td>
-            1
-        </td>
-        <td>
-            299
-        </td>
-        <td>
-            <input type="button" value="Usuń z koszyka" />
-        </td>
-    </tr>
-    @foreach(var cartItem in Model)
+    @foreach (var cartItem in Model)
     {
         <tr>
             <td>
-                <img src="@Url.Content(@cartItem.Product.Picture)"/>
+                <img src="@Url.Content(@cartItem.Product.Picture)" />
             </td>
             <td>
                 @cartItem.Product.Name
             </td>
             <td>
-                @cartItem.Quantity
+                @cartItem.Count
             </td>
             <td>
-                @cartItem.TotalPrice
-            </td>
-            <td>
-                <input type="button" value="Usuń z koszyka" />
+                <a href="/Cart/RemoveFromCart/@cartItem.Product.Id" class="btn btn-default">
+                    Usuń z koszyka
+                </a>
             </td>
         </tr>
     }
