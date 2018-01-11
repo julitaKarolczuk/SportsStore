@@ -81,7 +81,7 @@ namespace SportsStore.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Edit([Bind(Include = "Id,Name,CategoryId,Price,Picture,Hidden,Producer,Description")] Product product)
         {
             if (ModelState.IsValid)

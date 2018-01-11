@@ -10,6 +10,7 @@ using SportsStore.Models;
 using Microsoft.AspNet.Identity;
 using Newtonsoft.Json;
 using SportsStore.ViewModels;
+using System.Web.Helpers;
 
 namespace SportsStore.Controllers
 {
@@ -40,6 +41,7 @@ namespace SportsStore.Controllers
         }
 
         // GET: Orders/Create
+        [ValidateInput(false)]
         public ActionResult Create()
         {
             if (Request.Cookies.AllKeys.Contains("Cart"))
@@ -64,7 +66,7 @@ namespace SportsStore.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Create([Bind(Include = "Id,Payment,Shipment,Address")] Order order)
         {
             if (ModelState.IsValid)
@@ -85,6 +87,28 @@ namespace SportsStore.Controllers
 
                     db.Orders.Add(order);
                     db.SaveChanges();
+
+                    Response.Cookies.Remove("Cart");
+                    cookie.Expires = DateTime.Now.AddDays(-10);
+                    cookie.Value = null;
+                    Response.SetCookie(cookie);
+
+                    WebMail.SmtpServer = "smtp.gmail.com";
+                    //gmail port to send emails  
+                    WebMail.SmtpPort = 587;
+                    WebMail.SmtpUseDefaultCredentials = true;
+                    //sending emails with secure protocol  
+                    WebMail.EnableSsl = true;
+                    //EmailId used to send emails from application  
+                    WebMail.UserName = "";
+                    WebMail.Password = "";
+
+                    //Sender email address.  
+                    WebMail.From = "krzysztof.kirylowicz@gmail.com";
+
+                    //Send email  
+                    WebMail.Send(to: "krzys0149@gmail.com", subject: "dupa1", body: "dupa2");
+
                     return RedirectToAction("Index");
                 }
             }

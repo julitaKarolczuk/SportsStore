@@ -38,6 +38,36 @@
         </dd>
 
     </dl>
+    <table>
+        <tr>
+            <td>
+                obrazek
+            </td>
+            <td>
+                Nazwa
+            </td>
+            <td>
+                Ilość
+            </td>
+            <td>
+                Cena
+            </td>
+        </tr>
+        @foreach (var productOrder in Model.Order_Product)
+        {
+            <tr>
+                <td>
+                    <img class="productImg" src="@Url.Content(@productOrder.Product.Picture)" />
+                </td>
+                <td>
+                    @productOrder.Product.Name
+                </td>
+                <td>
+                    @productOrder.Amount
+                </td>
+            </tr>
+        }
+    </table>
 </div>
 <p>
     @Html.ActionLink("Powrót do listy zamówień", "Index")
