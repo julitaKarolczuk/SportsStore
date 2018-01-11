@@ -76,6 +76,7 @@ namespace SportsStore.Controllers
                     var cookie = Request.Cookies["Cart"];
                     var items = JsonConvert.DeserializeObject<List<CartItem>>(cookie.Value);
 
+                    order.CreationDate = DateTime.Now;
                     order.UserId = User.Identity.GetUserId();
                     order.Status = "Oczekujące na realizację";
 

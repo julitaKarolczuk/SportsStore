@@ -26,6 +26,7 @@ namespace SportsStore.Models
         public string Shipment { get; set; }
         public string Address { get; set; }
         public string UserId { get; set; }
+        public System.DateTime CreationDate { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
