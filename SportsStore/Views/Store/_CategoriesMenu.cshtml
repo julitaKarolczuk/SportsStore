@@ -2,13 +2,15 @@
 <nav>
     <ul class="verticalmenu">
         @foreach (var category in Model)
-        {
+            {
             <li>
                 <a href="@Url.Action("List","Store", new { categoryname = category.Name.ToString()})">
                     @category.Name
                 </a>
             </li>
         }
-        
+
     </ul>
-</nav>   
+</nav>
+
+

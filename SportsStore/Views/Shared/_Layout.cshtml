@@ -11,7 +11,7 @@
 </head> 
 <body>
     <div class="maincontainer">
-        <header>
+        <div class="banner">
             <div class="cartIcon">
                 @Html.ActionLink("Koszyk", "Index", "Cart")
             </div>
@@ -20,7 +20,11 @@
                     <img src="~/Images/logo.png" />
                 </a>
             </div>
-        </header>
+        </div>
+        <div class="categoryMenu">
+           
+
+        </div>
         <div class="placeholder">
             @RenderBody()
         </div>

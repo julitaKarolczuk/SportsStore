@@ -11,7 +11,8 @@ namespace SportsStore.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class AspNetUser
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -28,16 +29,24 @@ namespace SportsStore.Models
         public bool EmailConfirmed { get; set; }
         public string PasswordHash { get; set; }
         public string SecurityStamp { get; set; }
+
+        [Display(Name = "Numer telefonu")]
         public string PhoneNumber { get; set; }
         public bool PhoneNumberConfirmed { get; set; }
         public bool TwoFactorEnabled { get; set; }
         public Nullable<System.DateTime> LockoutEndDateUtc { get; set; }
         public bool LockoutEnabled { get; set; }
         public int AccessFailedCount { get; set; }
+
+        [Display(Name = "Nazwa uzytkownika")]
         public string UserName { get; set; }
+        [Display(Name = "Adres")]
         public string Address { get; set; }
+        [Display(Name = "Imiê")]
         public string FirstName { get; set; }
+        [Display(Name = "Nazwisko")]
         public string LastName { get; set; }
+        [Display(Name = "Kod promocyjny")]
         public string Discount { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

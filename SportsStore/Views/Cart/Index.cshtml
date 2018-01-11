@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@Html.Action("CategoriesMenu", "Store")
+
 <table>
     <tr>
         <td>
@@ -27,7 +27,7 @@
     {
         <tr>
             <td>
-                <img src="@Url.Content(@cartItem.Product.Picture)" />
+                <img class="productImg" src="@Url.Content(@cartItem.Product.Picture)" />
             </td>
             <td>
                 @cartItem.Product.Name
