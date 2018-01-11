@@ -7,6 +7,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SportsStore.Models;
+using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
+using SportsStore.ViewModels;
 
 namespace SportsStore.Controllers
 {
@@ -39,8 +42,22 @@ namespace SportsStore.Controllers
         // GET: Orders/Create
         public ActionResult Create()
         {
-            ViewBag.UserId = new SelectList(db.AspNetUsers, "Id", "Email");
-            return View();
+            if (Request.Cookies.AllKeys.Contains("Cart"))
+            {
+                var cookie = Request.Cookies["Cart"];
+                var items = JsonConvert.DeserializeObject<List<CartItem>>(cookie.Value);
+
+                var currentUserAddress = db.AspNetUsers.Find(User.Identity.GetUserId()).Address;
+                var model = new OrderViewModel
+                {
+                    UserAddress = currentUserAddress,
+                    Card = items
+                };
+
+                return View(model);
+            }
+
+            return RedirectToAction("Index", "Home");
         }
 
         // POST: Orders/Create
@@ -48,16 +65,30 @@ namespace SportsStore.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Status,Payment,Shipment,Address,UserId")] Order order)
+        public ActionResult Create([Bind(Include = "Id,Payment,Shipment,Address")] Order order)
         {
             if (ModelState.IsValid)
             {
-                db.Orders.Add(order);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (Request.Cookies.AllKeys.Contains("Cart"))
+                {
+                    var cookie = Request.Cookies["Cart"];
+                    var items = JsonConvert.DeserializeObject<List<CartItem>>(cookie.Value);
+
+                    order.UserId = User.Identity.GetUserId();
+                    order.Status = "Oczekujące na realizację";
+
+                    order.Order_Product = items.Select(i => new Order_Product
+                    {
+                        ProductId = i.Product.Id,
+                        Amount = i.Count
+                    }).ToList();
+
+                    db.Orders.Add(order);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
 
-            ViewBag.UserId = new SelectList(db.AspNetUsers, "Id", "Email", order.UserId);
             return View(order);
         }
 
