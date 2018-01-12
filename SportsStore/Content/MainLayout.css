@@ -138,3 +138,11 @@ ul {
 .cartIcon form {
     display: inline-block;
 }
+
+.advanced-search {
+    margin-left:50px
+}
+
+.advanced-search .form-control {
+    width: 200px;
+}

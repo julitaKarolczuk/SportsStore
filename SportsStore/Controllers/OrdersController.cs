@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity;
 using Newtonsoft.Json;
 using SportsStore.ViewModels;
 using System.Web.Helpers;
+using SportsStore.Helpers;
 
 namespace SportsStore.Controllers
 {
@@ -83,8 +84,10 @@ namespace SportsStore.Controllers
                     var cookie = Request.Cookies["Cart"];
                     var items = JsonConvert.DeserializeObject<List<CartItem>>(cookie.Value);
 
+                    var userId = User.Identity.GetUserId();
+
                     order.CreationDate = DateTime.Now;
-                    order.UserId = User.Identity.GetUserId();
+                    order.UserId = userId;
                     order.Status = "Oczekujące na realizację";
 
                     order.Order_Product = items.Select(i => new Order_Product
@@ -101,21 +104,8 @@ namespace SportsStore.Controllers
                     cookie.Value = null;
                     Response.SetCookie(cookie);
 
-                    WebMail.SmtpServer = "smtp.gmail.com";
-                    //gmail port to send emails  
-                    WebMail.SmtpPort = 587;
-                    WebMail.SmtpUseDefaultCredentials = true;
-                    //sending emails with secure protocol  
-                    WebMail.EnableSsl = true;
-                    //EmailId used to send emails from application  
-                    WebMail.UserName = "";
-                    WebMail.Password = "";
-
-                    //Sender email address.  
-                    WebMail.From = "";
-
-                    //Send email  
-                    WebMail.Send(to: "", subject: "", body: "");
+                    var receiverEmail = db.AspNetUsers.Find(userId)?.Email;
+                    EmailsHelper.SendEmail(receiverEmail, "Potwierdzenie zamówienia", "TEST");
 
                     return RedirectToAction("Index");
                 }

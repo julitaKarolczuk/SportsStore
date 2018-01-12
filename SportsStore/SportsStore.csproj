@@ -212,7 +212,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastucture\AppConfig.cs" />
+    <Compile Include="Helpers\EmailsHelper.cs" />
     <Compile Include="Migrations\201712091853312_InitialCreate.cs" />
     <Compile Include="Migrations\201712091853312_InitialCreate.Designer.cs">
       <DependentUpon>201712091853312_InitialCreate.cs</DependentUpon>
@@ -330,7 +330,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -394,10 +396,11 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Store\_CategoriesMenu.cshtml" />
     <Content Include="Views\Orders\IndexAdmin.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Search\Advanced.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

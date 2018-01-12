@@ -1,0 +1,76 @@
+﻿@model IEnumerable<SportsStore.Models.Product>
+@{
+    ViewBag.Title = "Wyszukiwanie zaawansowane";
+}
+
+<h2>Wyszukiwanie zaawansowane</h2>
+
+@using (Html.BeginForm("Advanced", "Search", FormMethod.Get))
+{
+    @Html.AntiForgeryToken()
+    <div class="advanced-search">
+        <label>Nazwa</label>
+        <input class="form-control" id="Name" name="Name" />
+        <label>Krótki opis</label>
+        <input class="form-control" id="ShortDescription" name="ShortDescription" />
+        <label>Opis</label>
+        <input class="form-control" id="Description" name="Description" />
+        <label>Kategoria</label>
+        <input class="form-control" id="Category" name="Category" />
+        <label>Producent</label>
+        <input class="form-control" id="Producer" name="Producer" />
+        <input type="submit" value="Szukaj" class="btn btn-default" />
+    </div>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Picture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Producer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShortDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <img class="productImg" src="@Url.Content(item.Picture)" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Producer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>
+
