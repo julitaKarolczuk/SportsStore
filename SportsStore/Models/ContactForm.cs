@@ -10,7 +10,7 @@ namespace SportsStore.Models
     {
         [Required(ErrorMessage = "Podaj Imię")]
         [Display(Name = "Imię:")]
-        public string Name { get; set; }
+        public string FirstName { get; set; }
 
         [Required(ErrorMessage = "Podaj Nazwisko")]
         [Display(Name = "Nazwisko:")]
@@ -29,7 +29,7 @@ namespace SportsStore.Models
         [Required(ErrorMessage = "Wpełnij obszar")]
         [Display(Name = "Pytanie:")]
         [DataType(DataType.MultilineText)]
-        public string textArea { get; set; }
+        public string TextArea { get; set; }
 
     }
 }

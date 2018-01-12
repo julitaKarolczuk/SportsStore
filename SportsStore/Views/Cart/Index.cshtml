@@ -50,7 +50,7 @@
     }
     @if (ViewBag.Discount != null)
     {
-        <p>Razem: @(sum * ViewBag.Discount)</p>
+        <p>Razem: @(sum * (1-(ViewBag.Discount/100)))</p>
     }
     else
     {
