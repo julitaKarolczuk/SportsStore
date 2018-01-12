@@ -7,12 +7,18 @@
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/MainLayout.css")
     @Scripts.Render("~/bundles/modernizr")
-    
-</head> 
+
+</head>
 <body>
     <div class="maincontainer">
         <div class="banner">
             <div class="cartIcon">
+                @using (Html.BeginForm("Index", "Search", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <input class="form-control" id="Search" name="Search" />
+                    <input type="submit" value="Szukaj" class="btn btn-default" />
+                }
                 <a href="/Cart">
                     <img class="card-icon" src="~/Images/cartIcon.png" alt="Przejdź do koszyka" />
                 </a>
@@ -23,10 +29,6 @@
                 </a>
             </div>
         </div>
-        <div class="categoryMenu">
-           
-
-        </div>
         <div class="placeholder">
             @RenderBody()
         </div>
@@ -35,13 +37,13 @@
                 <nav>
                     <ul class="nav navbar-nav">
                         <li>
-                            @Html.ActionLink("Kontakt", "Contact", "Home", null)
+                            @Html.ActionLink("Kontakt", "Contact", "Home")
                         </li>
                         <li>
-                            @Html.ActionLink("O nas", "About", "Home", null)
+                            @Html.ActionLink("O nas", "About", "Home")
                         </li>
                         <li>
-                            @Html.ActionLink("Regulamin", "Statute", "Home", null)
+                            @Html.ActionLink("Regulamin", "Statute", "Home")
                         </li>
                     </ul>
                 </nav>

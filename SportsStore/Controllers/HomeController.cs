@@ -11,10 +11,10 @@ namespace SportsStore.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        
+
         private Entities db = new Entities();
 
-        
+
         public ActionResult Statute()
         {
             return View();
@@ -22,17 +22,8 @@ namespace SportsStore.Controllers
 
         public ActionResult Index()
         {
-            var categories = db.Categories.ToList();
-
-            var products = db.Products.Where(p => !p.Hidden).Take(3).ToList();
-
-            var vm = new HomeViewModel()
-            {
-                Categories = categories,
-                Products = products
-            };
-
-            return View(vm);
+            var category = db.Categories.FirstOrDefault();
+            return RedirectToAction("List", "Store", new { categoryName = category != null ? category.Name : string.Empty });
         }
 
         public ActionResult About()

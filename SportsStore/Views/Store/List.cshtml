@@ -4,10 +4,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div>
-    @Html.Action("CategoriesMenu")
-    <div>
-         
+<div class="row">
+    <div class="col-md-2">
+        @Html.Action("CategoriesMenu")
+    </div>
+    <div class="col-md-10">
         <section>
             <ul>
                 @foreach (var product in Model)
@@ -29,11 +30,7 @@
                     </li>
                 }
             </ul>
-            <div class="clearboth"></div>
         </section>
-
-
-        
     </div>
 </div>
 

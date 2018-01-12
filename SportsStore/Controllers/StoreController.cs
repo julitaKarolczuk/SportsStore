@@ -28,7 +28,7 @@ namespace SportsStore.Controllers
 
         public ActionResult List(string categoryName)
         {
-            var category = db.Categories.Include("Products").FirstOrDefault(c => c.Name.Equals(categoryName, StringComparison.InvariantCultureIgnoreCase));
+            var category = db.Categories.FirstOrDefault(c => c.Name.Equals(categoryName, StringComparison.InvariantCultureIgnoreCase));
             if (category != null)
             {
                 var products = category.Products.Where(p => !p.Hidden);
