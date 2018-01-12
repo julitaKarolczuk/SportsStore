@@ -88,7 +88,7 @@ namespace SportsStore.Controllers
 
                     order.CreationDate = DateTime.Now;
                     order.UserId = userId;
-                    order.Status = "Oczekujące na realizację";
+                    order.Status = "Nowe";
 
                     order.Order_Product = items.Select(i => new Order_Product
                     {

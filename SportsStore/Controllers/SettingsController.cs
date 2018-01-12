@@ -37,9 +37,19 @@ namespace SportsStore.Controllers
         {
             var model = new SettingsViewModel();
             var contactEmail = db.Settings.FirstOrDefault(s => s.Key.Equals(Constant.ContactEmail, StringComparison.InvariantCultureIgnoreCase));
+            var applicationEmail = db.Settings.FirstOrDefault(s => s.Key.Equals(Constant.ApplicationEmail, StringComparison.InvariantCultureIgnoreCase));
+            var applicationEmailPassword = db.Settings.FirstOrDefault(s => s.Key.Equals(Constant.ApplicationEmailPassword, StringComparison.InvariantCultureIgnoreCase));
             if (contactEmail != null)
             {
                 model.ContactEmail = contactEmail;
+            }
+            if (applicationEmail != null)
+            {
+                model.ApplicationEmail = applicationEmail;
+            }
+            if (applicationEmailPassword != null)
+            {
+                model.ApplicationEmailPassword = applicationEmailPassword;
             }
 
             return View(model);
@@ -50,9 +60,12 @@ namespace SportsStore.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(string Email)
+        public ActionResult Index(string Email, string ApplicationEmail, string ApplicationEmailPassword)
         {
             var contactEmail = db.Settings.FirstOrDefault(s => s.Key.Equals(Constant.ContactEmail, StringComparison.InvariantCultureIgnoreCase));
+            var applicationEmail = db.Settings.FirstOrDefault(s => s.Key.Equals(Constant.ApplicationEmail, StringComparison.InvariantCultureIgnoreCase));
+            var applicationEmailPassword = db.Settings.FirstOrDefault(s => s.Key.Equals(Constant.ApplicationEmailPassword, StringComparison.InvariantCultureIgnoreCase));
+
             if (contactEmail != null)
             {
                 contactEmail.Value = Email;
@@ -65,6 +78,32 @@ namespace SportsStore.Controllers
                     Value = Email
                 });
             }
+
+            if (applicationEmail != null)
+            {
+                applicationEmail.Value = ApplicationEmail;
+            }
+            else
+            {
+                db.Settings.Add(new Setting
+                {
+                    Key = Constant.ApplicationEmail,
+                    Value = ApplicationEmail
+                });
+            }
+            if (applicationEmailPassword != null)
+            {
+                applicationEmailPassword.Value = ApplicationEmailPassword;
+            }
+            else
+            {
+                db.Settings.Add(new Setting
+                {
+                    Key = Constant.ApplicationEmailPassword,
+                    Value = ApplicationEmailPassword
+                });
+            }
+
             db.SaveChanges();
             return RedirectToAction("Index");
         }
