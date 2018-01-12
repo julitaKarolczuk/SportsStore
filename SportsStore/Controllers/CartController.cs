@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
 using SportsStore.Models;
 using System;
 using System.Collections;
@@ -15,8 +16,9 @@ namespace SportsStore.Controllers
 
         public ActionResult Index()
         {
+            var user = db.AspNetUsers.Find(User.Identity.GetUserId());
             var items = new List<CartItem>();
-
+            ViewBag.Discount = user.Discount;
             if (Request.Cookies.AllKeys.Contains("Cart"))
             {
                 var cookie = Request.Cookies["Cart"];

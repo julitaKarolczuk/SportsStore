@@ -16,11 +16,6 @@ namespace SportsStore.Models
         [Display(Name = "Nazwisko:")]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = "Podaj adresata")]
-        [Display(Name = "Adresat:")]
-        [EmailAddress]
-        public string StoreEmail { get; set; }
-
         [Required(ErrorMessage = "Podaj swój email")]
         [Display(Name = "Nadawca:")]
         [EmailAddress]
