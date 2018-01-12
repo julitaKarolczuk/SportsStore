@@ -26,11 +26,17 @@ namespace SportsStore.Controllers
             return View(product);
         }
 
-        public ActionResult List(string categoryname)
+        public ActionResult List(string categoryName)
         {
-            var category = db.Categories.Include("Products").Where(c => c.Name.Equals(categoryname, StringComparison.InvariantCultureIgnoreCase)).Single();
-            var products = category.Products.Where(p => !p.Hidden).ToList();
-            return View(products);
+            var category = db.Categories.FirstOrDefault(c => c.Name.Equals(categoryName, StringComparison.InvariantCultureIgnoreCase));
+            if (category != null)
+            {
+                var products = category.Products.Where(p => !p.Hidden);
+
+                return View(products);
+            }
+
+            return View();
         }
 
         [ChildActionOnly]
