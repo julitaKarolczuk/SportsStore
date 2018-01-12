@@ -18,6 +18,13 @@ namespace SportsStore.Controllers
     {
         private Entities db = new Entities();
 
+        // GET: OrdersForAdmin
+        public ActionResult IndexAdmin()
+        {
+            var orders = db.Orders;
+            return View(orders.ToList());
+        }
+
         // GET: Orders
         public ActionResult Index()
         {
@@ -138,13 +145,16 @@ namespace SportsStore.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Status,Payment,Shipment,Address,UserId")] Order order)
+        public ActionResult Edit([Bind(Include = "Status")] Order order)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(order).State = EntityState.Modified;
+                var currentOrder = db.Orders.Find(order.Id);
+                currentOrder.Status = order.Status;
+                db.Entry(currentOrder).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
+
             }
             ViewBag.UserId = new SelectList(db.AspNetUsers, "Id", "Email", order.UserId);
             return View(order);

@@ -68,7 +68,7 @@
           <Property Name="Address" Type="nvarchar(max)" />
           <Property Name="FirstName" Type="nvarchar(max)" />
           <Property Name="LastName" Type="nvarchar(max)" />
-          <Property Name="Discount" Type="nvarchar(max)" />
+          <Property Name="Discount" Type="decimal" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -336,7 +336,7 @@
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Order_User" FromRole="AspNetUsers" ToRole="Order" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
-          <Property Name="Discount" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Discount" Type="Decimal" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="Category">
           <Key>

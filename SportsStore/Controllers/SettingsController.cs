@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SportsStore.Models;
+using SportsStore.ViewModels;
+using SportsStore.Common;
 
 namespace SportsStore.Controllers
 {
@@ -14,12 +16,7 @@ namespace SportsStore.Controllers
     {
         private Entities db = new Entities();
 
-        // GET: Settings
-        public ActionResult Index()
-        {
-            return View(db.Settings.ToList());
-        }
-
+       
         // GET: Settings/Details/5
         public ActionResult Details(int? id)
         {
@@ -36,9 +33,16 @@ namespace SportsStore.Controllers
         }
 
         // GET: Settings/Create
-        public ActionResult Create()
+        public ActionResult Index()
         {
-            return View();
+            var model = new SettingsViewModel();
+            var contactEmail = db.Settings.FirstOrDefault(s => s.Key.Equals(Constant.ContactEmail, StringComparison.InvariantCultureIgnoreCase));
+            if (contactEmail != null)
+            {
+                model.ContactEmail = contactEmail;
+            }
+
+            return View(model);
         }
 
         // POST: Settings/Create
@@ -46,17 +50,25 @@ namespace SportsStore.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Key,Value")] Setting setting)
+        public ActionResult Index(string Email)
         {
-            if (ModelState.IsValid)
+            var contactEmail = db.Settings.FirstOrDefault(s => s.Key.Equals(Constant.ContactEmail, StringComparison.InvariantCultureIgnoreCase));
+            if (contactEmail != null)
             {
-                db.Settings.Add(setting);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                contactEmail.Value = Email;
             }
-
-            return View(setting);
+            else
+            {
+                db.Settings.Add(new Setting
+                {
+                    Key = Constant.ContactEmail,
+                    Value = Email
+                });
+            }
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
+
 
         // GET: Settings/Edit/5
         public ActionResult Edit(int? id)
