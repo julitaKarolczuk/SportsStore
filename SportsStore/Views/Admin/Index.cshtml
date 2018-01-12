@@ -1,33 +1,35 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Panel administracyjny";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<a style=" background-color: blue; width: 200px; height: 200px; float: left;" href="@Url.Action("Index","Products")">
-    <div>
-        Zarzadzaj produktami
-    </div>
-</a>
-<a href="@Url.Action("Index","Categories")">
-    <div style="background-color:red; width:200px; height:200px; margin-left:10px; float: left;">
-        Zarzadzaj kategoriami
-    </div>
-</a>
-<a href="@Url.Action("Index","AspNetUsers")">
-    <div style="background-color:yellow; width:200px; height:200px; margin-left:10px; float: left;">
-        Zarzadzaj klientami
-    </div>
-</a>
-<a href="@Url.Action("Index","Settings")">
-    <div style="background-color:green; width:200px; height:200px; margin-left:10px; float: left;">
-        Ustawienia
-    </div>
-</a>
-<a href="@Url.Action("Index","Orders")">
-    <div style="background-color:orange; width:200px; height:200px; margin-left:10px; float: left;">
-        Zarzadzaj zamówieniami
-    </div>
-</a>
-
-<div style="clear:both"></div>
+<div class="page-title">
+    <h2>Panel Administracyjny</h2>
+</div>
+<div class="tiles-container">
+    <a href="@Url.Action("Index","Products")">
+        <div class="custom-tile" style=" background-color: #1A659E;">
+            <p>Zarzadzaj produktami</p>
+        </div>
+    </a>
+    <a href="@Url.Action("Index","Categories")">
+        <div class="custom-tile" style="background-color:#004E89;">
+            <p>Zarzadzaj kategoriami</p>
+        </div>
+    </a>
+    <a href="@Url.Action("Index","AspNetUsers")">
+        <div class="custom-tile" style="background-color:#D0EFD6;">
+            <p>Zarzadzaj klientami</p>
+        </div>
+    </a> 
+    <a href="@Url.Action("Index","Orders")">
+        <div class="custom-tile" style="background-color:#F7C59F;">
+            <p>Zarzadzaj zamówieniami</p>
+        </div>
+    </a>
+    <a href="@Url.Action("Index","Settings")">
+        <div class="custom-tile" style="background-color:#FF6B35;">
+            <p>Ustawienia aplikacji</p>
+        </div>
+    </a>
+</div>

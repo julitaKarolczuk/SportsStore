@@ -15,12 +15,11 @@
                     <li>
                         <article>
                             <a class="alert-link warning cartLogo" href="@Url.Action("AddToCart", "Cart", new { id = product.Id})">
-                                <img src="~/Images/cartIcon.png" /><br />
+                                <img class="card-icon" src="~/Images/cartIcon.png" /><br />
                             </a>
                             <a href="@Url.Action("Details","Store", new { id = product.Id})">
                                 <div>
                                     <img class="productImg" src="@Url.Content(product.Picture)">
-
                                 </div>
                                 <h5>
                                     @product.Producer - @product.Name

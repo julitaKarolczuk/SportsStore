@@ -13,7 +13,9 @@
     <div class="maincontainer">
         <div class="banner">
             <div class="cartIcon">
-                @Html.ActionLink("Koszyk", "Index", "Cart")
+                <a href="/Cart">
+                    <img class="card-icon" src="~/Images/cartIcon.png" alt="Przejdź do koszyka" />
+                </a>
             </div>
             <div class="logoIcon">
                 <a href="@Url.Action("Index","Home")">
