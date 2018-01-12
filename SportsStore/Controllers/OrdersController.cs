@@ -105,10 +105,10 @@ namespace SportsStore.Controllers
                     WebMail.Password = "";
 
                     //Sender email address.  
-                    WebMail.From = "krzysztof.kirylowicz@gmail.com";
+                    WebMail.From = "";
 
                     //Send email  
-                    WebMail.Send(to: "krzys0149@gmail.com", subject: "dupa1", body: "dupa2");
+                    WebMail.Send(to: "", subject: "", body: "");
 
                     return RedirectToAction("Index");
                 }
