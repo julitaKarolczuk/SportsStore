@@ -48,7 +48,7 @@ namespace SportsStore.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,CategoryId,Price,Picture,Hidden,Producer,Description")] Product product)
+        public ActionResult Create([Bind(Include = "Id,Name,CategoryId,Price,Picture,Hidden,Producer,Description,ShortDescription")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace SportsStore.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Edit([Bind(Include = "Id,Name,CategoryId,Price,Picture,Hidden,Producer,Description")] Product product)
+        public ActionResult Edit([Bind(Include = "Id,Name,CategoryId,Price,Picture,Hidden,Producer,Description,ShortDescription")] Product product)
         {
             if (ModelState.IsValid)
             {

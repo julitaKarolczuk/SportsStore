@@ -41,7 +41,7 @@ namespace SportsStore.Models
             Picture = product.Picture;
             Hidden = product.Hidden;
             Producer = product.Producer;
-            Description = product.Description;
+            Description = product.ShortDescription;
         }
     }
 }
