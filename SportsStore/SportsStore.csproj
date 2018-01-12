@@ -393,6 +393,7 @@
     <Content Include="Views\Store\Details.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Store\_CategoriesMenu.cshtml" />
+    <Content Include="Views\Orders\IndexAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
