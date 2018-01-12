@@ -145,13 +145,12 @@ namespace SportsStore.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Status")] Order order)
+        public ActionResult Edit(Order order)
         {
             if (ModelState.IsValid)
             {
                 var currentOrder = db.Orders.Find(order.Id);
                 currentOrder.Status = order.Status;
-                db.Entry(currentOrder).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
 
