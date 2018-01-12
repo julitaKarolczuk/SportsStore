@@ -29,6 +29,9 @@
         <th>
             @Html.DisplayNameFor(model => model.LastName)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Discount)
+        </th>
         <th></th>
     </tr>
 
@@ -52,6 +55,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.LastName)
         </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Discount)
+        </td>
+
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
