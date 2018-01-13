@@ -10,5 +10,6 @@ namespace SportsStore.Common
         public const string ContactEmail = "ContactEmail";
         public const string ApplicationEmail = "ApplicationEmail";
         public const string ApplicationEmailPassword = "ApplicationEmailPassword";
+        public const string Counter = "Counter";
     }
 }

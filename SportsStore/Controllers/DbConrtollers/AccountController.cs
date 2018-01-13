@@ -9,12 +9,15 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using SportsStore.Models;
+using SportsStore.Common;
 
 namespace SportsStore.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        Entities db = new Entities();
+
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -68,11 +71,28 @@ namespace SportsStore.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+            var counter = db.Settings.FirstOrDefault(s => s.Key.Equals(Constant.Counter,StringComparison.InvariantCultureIgnoreCase));
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
+            if(counter == null)
+            {
+                db.Settings.Add(new Setting
+                {
+                    Key = Constant.Counter,
+                    Value = "1"
+                });
+                
+            }
+            else
+            {
+                var currentCounter = Int32.Parse(counter.Value);
+                currentCounter++;
+                counter.Value = string.Empty + currentCounter;
+            }
+             db.SaveChanges();
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
