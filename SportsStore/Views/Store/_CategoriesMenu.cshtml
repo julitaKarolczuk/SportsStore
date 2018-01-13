@@ -9,7 +9,19 @@
                 </a>
             </li>
         }
-
+        <li>
+            <a href="/Products/Bestsellers" style="color:red">
+                BESTSELLERS
+            </a>
+        </li>
+        @if (User.IsInRole("admin"))
+        {
+            <li>
+                <a href="/Admin" style="color:#5fba7d">
+                    Administracja
+                </a>
+            </li>
+        }
     </ul>
 </nav>
 

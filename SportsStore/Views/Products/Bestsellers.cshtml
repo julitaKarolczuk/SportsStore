@@ -1,0 +1,64 @@
+﻿@model IEnumerable<KeyValuePair<SportsStore.Models.Product, int>>
+@{
+    ViewBag.Title = "Bestsellers";
+}
+
+<h2>Bestsellers</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Key.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Key.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Key.Picture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Key.Producer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Key.ShortDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Key.Category.Name)
+        </th>
+        <th>
+            <label>Ilość zakupionych</label>
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Key.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Key.Price)
+            </td>
+            <td>
+                <img class="productImg" src="@Url.Content(item.Key.Picture)" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Key.Producer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Key.ShortDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Key.Category.Name)
+            </td>
+            <td>
+                @item.Value
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", "Products", new { id = item.Key.Id }, null)
+            </td>
+        </tr>
+    }
+
+</table>

@@ -398,6 +398,7 @@
     <Content Include="Views\Orders\IndexAdmin.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Search\Advanced.cshtml" />
+    <Content Include="Views\Products\Bestsellers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
