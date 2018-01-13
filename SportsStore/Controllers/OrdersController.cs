@@ -152,8 +152,14 @@ namespace SportsStore.Controllers
             if (ModelState.IsValid)
             {
                 var currentOrder = db.Orders.Find(order.Id);
+                var oldStatus = currentOrder.Status;
                 currentOrder.Status = order.Status;
                 db.SaveChanges();
+
+                var receiverEmail = db.AspNetUsers.Find(order.UserId)?.Address;
+                if (!string.IsNullOrEmpty(receiverEmail))
+                    EmailsHelper.SendEmail(receiverEmail, "Zmiana statusu zamówienia", $"Status Twojego zamówienia został zmieniony z '{oldStatus}' na '{order.Status}'");
+
                 return RedirectToAction("Index");
 
             }
