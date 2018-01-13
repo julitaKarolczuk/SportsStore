@@ -16,7 +16,7 @@ namespace SportsStore.Controllers
     {
         private Entities db = new Entities();
 
-       
+
         // GET: Settings/Details/5
         public ActionResult Details(int? id)
         {
@@ -35,22 +35,12 @@ namespace SportsStore.Controllers
         // GET: Settings/Create
         public ActionResult Index()
         {
-            var model = new SettingsViewModel();
-            var contactEmail = db.Settings.FirstOrDefault(s => s.Key.Equals(Constant.ContactEmail, StringComparison.InvariantCultureIgnoreCase));
-            var applicationEmail = db.Settings.FirstOrDefault(s => s.Key.Equals(Constant.ApplicationEmail, StringComparison.InvariantCultureIgnoreCase));
-            var applicationEmailPassword = db.Settings.FirstOrDefault(s => s.Key.Equals(Constant.ApplicationEmailPassword, StringComparison.InvariantCultureIgnoreCase));
-            if (contactEmail != null)
+            var model = new SettingsViewModel
             {
-                model.ContactEmail = contactEmail;
-            }
-            if (applicationEmail != null)
-            {
-                model.ApplicationEmail = applicationEmail;
-            }
-            if (applicationEmailPassword != null)
-            {
-                model.ApplicationEmailPassword = applicationEmailPassword;
-            }
+                ContactEmail = db.Settings.FirstOrDefault(s => s.Key.Equals(Constant.ContactEmail, StringComparison.InvariantCultureIgnoreCase)) ?? new Setting { Key = Constant.ContactEmail, Value = string.Empty },
+                ApplicationEmail = db.Settings.FirstOrDefault(s => s.Key.Equals(Constant.ApplicationEmail, StringComparison.InvariantCultureIgnoreCase)) ?? new Setting { Key = Constant.ApplicationEmail, Value = string.Empty },
+                ApplicationEmailPassword = db.Settings.FirstOrDefault(s => s.Key.Equals(Constant.ApplicationEmailPassword, StringComparison.InvariantCultureIgnoreCase)) ?? new Setting { Key = Constant.ApplicationEmailPassword, Value = string.Empty }
+            };
 
             return View(model);
         }
