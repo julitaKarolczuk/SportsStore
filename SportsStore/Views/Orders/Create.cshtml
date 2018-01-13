@@ -44,6 +44,9 @@
                         @cartItem.Count
                     </td>
                     <td>
+                        @(cartItem.Count * cartItem.Product.Price)
+                    </td>
+                    <td>
                         <a href="/Cart/RemoveFromCart/@cartItem.Product.Id" class="btn btn-default">
                             Usuń z koszyka
                         </a>

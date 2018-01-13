@@ -34,6 +34,9 @@
                 @cartItem.Count
             </td>
             <td>
+                @(cartItem.Count * cartItem.Product.Price)
+            </td>
+            <td>
                 <a href="/Cart/RemoveFromCart/@cartItem.Product.Id" class="btn btn-default">
                     Usuń z koszyka
                 </a>
@@ -50,7 +53,7 @@
     }
     @if (ViewBag.Discount != null)
     {
-        <p>Razem: @(sum * (1-(ViewBag.Discount/100)))</p>
+        <p>Razem: @((double)sum * (1-(ViewBag.Discount/100)))</p>
     }
     else
     {
