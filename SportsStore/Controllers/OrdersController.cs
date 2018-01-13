@@ -105,7 +105,19 @@ namespace SportsStore.Controllers
                     Response.SetCookie(cookie);
 
                     var receiverEmail = db.AspNetUsers.Find(userId)?.Email;
-                    EmailsHelper.SendEmail(receiverEmail, "Potwierdzenie zamówienia", "TEST");
+
+                    var message = string.Empty;
+                    double sum = 0;
+
+                    foreach (var product in items)
+                    {
+                        sum += (double)(product.Count * product.Product.Price);
+                        message += $"Nazwa produktu: {product.Product.Name}, Cena: {product.Product.Price}, Ilosc: {product.Count}, Suma: {((double)(product.Count * product.Product.Price)).ToString()}";
+                    }
+
+                    message += $"Suma zamówienia: {sum.ToString()}, Sposób dostawy: {order.Shipment}, Metoda płatności: {order.Payment}";
+
+                    EmailsHelper.SendEmail(receiverEmail, "Potwierdzenie zamówienia", message);
 
                     return RedirectToAction("Index");
                 }
