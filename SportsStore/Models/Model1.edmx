@@ -112,6 +112,7 @@
           <Property Name="Producer" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="varchar(max)" Nullable="false" />
           <Property Name="ShortDescription" Type="varchar(max)" />
+          <Property Name="SmallPicture" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Setting">
           <Key>
@@ -387,6 +388,7 @@
           <NavigationProperty Name="Category" Relationship="Self.FK__Product__Categor__412EB0B6" FromRole="Product" ToRole="Category" />
           <NavigationProperty Name="Order_Product" Relationship="Self.FK__Order_Pro__Produ__403A8C7D" FromRole="Product" ToRole="Order_Product" />
           <Property Name="ShortDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SmallPicture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Setting">
           <Key>
@@ -615,6 +617,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="Model.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="SmallPicture" ColumnName="SmallPicture" />
                 <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

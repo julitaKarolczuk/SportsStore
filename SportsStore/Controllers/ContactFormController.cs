@@ -28,7 +28,7 @@ namespace SportsStore.Controllers
             else
             {
                 //send  email
-                EmailsHelper.SendEmail(db.Settings.FirstOrDefault(s => s.Key.Equals(Constant.ApplicationEmail, StringComparison.InvariantCultureIgnoreCase)).Value,"Formularz kontaktowy",($"{contactForm.FirstName} {contactForm.LastName} twój formularz o treści + {contactForm.TextArea} został wysłany do administratora"));
+                EmailsHelper.SendEmail(db.Settings.FirstOrDefault(s => s.Key.Equals(Constant.ApplicationEmail, StringComparison.InvariantCultureIgnoreCase)).Value,"Formularz kontaktowy",($"Zgłoszenie od {contactForm.FirstName} {contactForm.LastName} nr.tel: {contactForm.TextArea} o treści {contactForm.TextArea}"));
                 return RedirectToAction("Index", "Home");
             }
         }
