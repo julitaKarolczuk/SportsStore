@@ -2,63 +2,70 @@
 @{
     ViewBag.Title = "Bestsellers";
 }
+<head>
+    <link href="~/Content/MainLayout.css" rel="stylesheet" />
+    <link href="~/Content/doTabeli.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Acme|Antic+Slab|Boogaloo|Josefin+Sans:400,700,700i|Kavivanar|Poppins:400,600,600i,700,700i|Raleway:400,600,600i,700,700i,800,800i" rel="stylesheet"> 
+</head>
 
-<h2>Bestsellers</h2>
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Key.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Key.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Key.Picture)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Key.Producer)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Key.ShortDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Key.Category.Name)
-        </th>
-        <th>
-            <label>Ilość zakupionych</label>
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Key.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Key.Price)
-            </td>
-            <td>
-                <img class="productImg" src="@Url.Content(item.Key.Picture)" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Key.Producer)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Key.ShortDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Key.Category.Name)
-            </td>
-            <td>
-                @item.Value
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", "Products", new { id = item.Key.Id }, null)
-            </td>
+<h2 class="tit">Bestsellers</h2>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <tr style="background-color:darkgray; font-family:Josefin Sans; font-size:15px; font-weight:700;">
+            <th style="text-align:center;">
+                @Html.DisplayNameFor(model => model.Key.Name)
+            </th>
+            <th style="text-align:center;">
+                @Html.DisplayNameFor(model => model.Key.Price)
+            </th>
+            <th style="text-align:center;">
+                @Html.DisplayNameFor(model => model.Key.Picture)
+            </th>
+            <th style="text-align:center;">
+                @Html.DisplayNameFor(model => model.Key.Producer)
+            </th>
+            <th style="text-align:center;">
+                @Html.DisplayNameFor(model => model.Key.ShortDescription)
+            </th>
+            <th style="text-align:center;">
+                @Html.DisplayNameFor(model => model.Key.Category.Name)
+            </th>
+            <th style="text-align:center;">
+                <label>Ilość zakupionych</label>
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.Key.Name)
+                </td>
+                <td style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.Key.Price)
+                </td>
+                <td>
+                    <img class="productImg" src="@Url.Content(item.Key.Picture)" />
+                </td>
+                <td style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.Key.Producer)
+                </td>
+                <td style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.Key.ShortDescription)
+                </td>
+                <td style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.Key.Category.Name)
+                </td>
+                <td style="text-align:center;">
+                    @item.Value
+                </td>
+                <td style="text-align:center;">
+                    @Html.ActionLink("Details", "Details", "Products", new { id = item.Key.Id }, null)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

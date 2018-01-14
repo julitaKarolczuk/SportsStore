@@ -2,8 +2,13 @@
 @{
     ViewBag.Title = "Wyszukiwanie zaawansowane";
 }
+<head>
+    <link href="~/Content/MainLayout.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Acme|Antic+Slab|Boogaloo|Josefin+Sans:400,700,700i|Kavivanar|Poppins:400,600,600i,700,700i|Raleway:400,600,600i,700,700i,800,800i" rel="stylesheet">
+</head>
 
-<h2>Wyszukiwanie zaawansowane</h2>
+<h2 h2 style="font-family: Poppins; font-weight:700; text-align: center;">Wyszukiwanie zaawansowane</h2>
 
 @using (Html.BeginForm("Advanced", "Search", FormMethod.Get))
 {

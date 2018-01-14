@@ -1,6 +1,14 @@
 ﻿body {
 }
 
+
+.tit{
+    font-family: Boogaloo;
+    font-size: 3em;
+    margin: 7px;
+    text-align: center;
+}
+
 .maincontainer {
     height: 70%;
     width: 80%;
@@ -90,9 +98,12 @@ ul {
     float: left;
 }
 
+.space{
+    margin-top: 2`em;
+}
 .productImg {
-    width: 300px;
-    height: 144px;
+    width: 200px;
+    height: 120px;
 }
 
 .tiles-container {
@@ -146,3 +157,4 @@ ul {
 .advanced-search .form-control {
     width: 200px;
 }
+

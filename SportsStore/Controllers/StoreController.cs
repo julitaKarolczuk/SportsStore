@@ -36,7 +36,7 @@ namespace SportsStore.Controllers
                 return View(products);
             }
 
-            return View();
+            return View(new List<Product>());
         }
 
         [ChildActionOnly]

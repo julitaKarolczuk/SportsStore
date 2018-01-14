@@ -1,16 +1,22 @@
 ﻿@model IEnumerable<SportsStore.Models.Category>
+<head>
+    <link href="~/Content/MainLayout.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Acme|Antic+Slab|Boogaloo|Josefin+Sans:400,700,700i|Kavivanar|Poppins:400,600,600i,700,700i|Raleway:400,600,600i,700,700i,800,800i" rel="stylesheet">
+</head>
+
 <nav>
     <ul class="verticalmenu">
         @foreach (var category in Model)
             {
-            <li>
+            <li style="font-family:Boogaloo; text-align:center;">
                 <a href="@Url.Action("List","Store", new { categoryname = category.Name.ToString()})">
                     @category.Name
                 </a>
             </li>
         }
-        <li>
-            <a href="/Products/Bestsellers" style="color:red">
+        <li style="font-family:Boogaloo; text-align:center;">
+            <a href="/Products/Bestsellers" style="color:red ; font-family:Boogaloo; text-align:center;">
                 BESTSELLERS
             </a>
         </li>

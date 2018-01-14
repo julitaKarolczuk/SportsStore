@@ -1,0 +1,22 @@
+﻿body {
+}
+
+.space{
+    margin-top:7px;
+}
+
+.klasaOli !important {
+    background-color: darkgray;
+    font-family: Josefin Sans;
+    font-size: 15px;
+    font-weight: 700;
+    text-align:center;
+}
+
+.th2 {
+    text-align: center;
+}
+
+td {
+   text-align:center;
+}

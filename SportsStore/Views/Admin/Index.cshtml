@@ -3,37 +3,43 @@
     ViewBag.Title = "Panel administracyjny";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<head>
+    <link href="~/Content/MainLayout.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Antic+Slab|Boogaloo|Kavivanar|Poppins|Raleway" rel="stylesheet"> 
+</head>
 <div class="page-title">
     <h2>Panel Administracyjny</h2>
 </div>
 <div class="tiles-container">
     <a href="@Url.Action("Index","Products")">
-        <div class="custom-tile" style=" background-color: #1A659E;">
+        <div class="custom-tile" style=" font-family:Poppins; background-color: #0066CC;">
             <p>Zarzadzaj produktami</p>
         </div>
     </a>
     <a href="@Url.Action("Index","Categories")">
-        <div class="custom-tile" style="background-color:#004E89;">
+        <div class="custom-tile" style="font-family:Poppins; background-color:#7093DB;">
             <p>Zarzadzaj kategoriami</p>
         </div>
     </a>
     <a href="@Url.Action("Index","AspNetUsers")">
-        <div class="custom-tile" style="background-color:#D0EFD6;">
+        <div class="custom-tile" style="font-family:Poppins; background-color:#0066CC;">
             <p>Zarzadzaj klientami</p>
         </div>
     </a> 
     <a href="@Url.Action("Index","Orders")">
-        <div class="custom-tile" style="background-color:#F7C59F;">
+        <div class="custom-tile" style="font-family:Poppins; background-color:#7093DB;">
             <p>Zarzadzaj zamówieniami</p>
         </div>
     </a>
     <a href="@Url.Action("Index","Settings")">
-        <div class="custom-tile" style="background-color:#FF6B35;">
+        <div class="custom-tile" style="font-family:Poppins; background-color:#0066CC;">
             <p>Ustawienia aplikacji</p>
         </div>
     </a>
     <a href="">
-        <div class="custom-tile" style="background-color:#480100;">
+        <div class="custom-tile" style="font-family:Poppins; margin-top:7px; background-color:#003366;">
+            <p>Liczba odwiedzin: </p>
             <p>@ViewBag.Counter</p>
         </div>
     </a>
