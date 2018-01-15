@@ -1,7 +1,7 @@
 ﻿@model SportsStore.Models.Category
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Dodawanie kategorii";
 }
 
 <head>
@@ -10,19 +10,18 @@
     <link href="https://fonts.googleapis.com/css?family=Acme|Antic+Slab|Boogaloo|Josefin+Sans:400,700,700i|Kavivanar|Poppins:400,600,600i,700,700i|Raleway:400,600,600i,700,700i,800,800i" rel="stylesheet">
 </head>
 
-<h2 style="font-family: Poppins; font-weight:700; text-align: center;">Create</h2>
+<h2 style="font-family: Poppins; font-weight:700; text-align: center;">Dodawanie kategorii</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4 style="font-family: Josefin Sans; text-align: center; font-size:15px;">Category</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">Nazwa kategorii</label>
             <div class="col-md-7">
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
@@ -30,7 +29,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Hidden, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">Ukryta</label>
             <div class="col-md-7">
                 <div class="checkbox">
                     @Html.EditorFor(model => model.Hidden)
@@ -41,14 +40,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-7">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Utwórz" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Powrót do listy kategorii", "Index", null, new { @class = "btn btn-primary" })
 </div>
 
 @section Scripts {

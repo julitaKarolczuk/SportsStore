@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<SportsStore.Models.Order>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista zamówień";
 }
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -10,41 +10,50 @@
     <link href="~/Content/doTabeli.css" rel="stylesheet" />
 </head>
 
-<table class="table space">
+<h2>Twoje zamówienia</h2>
+
+<table class="table table-bordered">
     <tr class="wiersz1">
         <th class="th2">
-            @Html.DisplayNameFor(model => model.Status)
+            Status
         </th>
         <th class="th2">
-            @Html.DisplayNameFor(model => model.Payment)
+            Metoda płatności
         </th>
         <th class="th2">
-            @Html.DisplayNameFor(model => model.Shipment)
+            Sposób dostawy
         </th>
         <th class="th2">
-            @Html.DisplayNameFor(model => model.Address)
+            Adres dostawy
+        </th>
+        <th class="th2">
+            Data zamóienia
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Payment)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Shipment)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) 
-        </td>
-    </tr>
-}
+    @foreach (var item in Model.OrderByDescending(i=>i.CreationDate))
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Payment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Shipment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @item.CreationDate.ToString()
+            </td>
+            <td>
+                @Html.ActionLink("Szczegóły zamówienia", "Details", new { id = item.Id }, new { @class = "btn btn-primary" })
+            </td>
+        </tr>
+    }
 
 </table>

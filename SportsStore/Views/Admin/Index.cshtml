@@ -27,7 +27,7 @@
             <p>Zarzadzaj klientami</p>
         </div>
     </a> 
-    <a href="@Url.Action("Index","Orders")">
+    <a href="@Url.Action("IndexAdmin","Orders")">
         <div class="custom-tile" style="font-family:Poppins; background-color:#7093DB;">
             <p>Zarzadzaj zamówieniami</p>
         </div>
@@ -37,10 +37,9 @@
             <p>Ustawienia aplikacji</p>
         </div>
     </a>
-    <a href="">
-        <div class="custom-tile" style="font-family:Poppins; margin-top:7px; background-color:#003366;">
-            <p>Liczba odwiedzin: </p>
-            <p>@ViewBag.Counter</p>
+    <a>
+        <div class="custom-tile" style="font-family:Poppins; background-color:#7093DB;">
+            <p> Liczba Odwiedzin: @ViewBag.Counter</p>
         </div>
     </a>
 </div>

@@ -13,33 +13,34 @@
 <h2>Kategorie</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Dodaj kategorię", "Create", null, new { @class = "btn btn-primary" })
 </p>
-<table class="table">
+<table class="table" style="padding:2rem">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Nazwa kategorii
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Hidden)
+            Ukryta
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Hidden)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @(item.Hidden ? "Tak" : "Nie")
+            </td>
+            <td>
+                @Html.ActionLink("Edytuj", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" }) 
+                @Html.ActionLink("Szczegóły", "Details", new { id = item.Id }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Usuń", "Delete", new { id = item.Id }, new { @class = "btn btn-primary" })
+            </td>
+        </tr>
+    }
 
 </table>

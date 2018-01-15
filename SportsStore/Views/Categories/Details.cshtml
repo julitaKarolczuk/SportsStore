@@ -1,7 +1,7 @@
 ﻿@model SportsStore.Models.Category
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Szczegóły";
 }
 
 <head>
@@ -10,14 +10,14 @@
     <link href="https://fonts.googleapis.com/css?family=Acme|Antic+Slab|Boogaloo|Josefin+Sans:400,700,700i|Kavivanar|Poppins:400,600,600i,700,700i|Raleway:400,600,600i,700,700i,800,800i" rel="stylesheet">
 </head>
 
-<h2 style="font-family: Poppins; font-weight:700; text-align: center;">Details</h2>
+<h2 style="font-family: Poppins; font-weight:700; text-align: center;">Szczegóły</h2>
 
 <div>
-    <h4 style="font-family: Josefin Sans; text-align: center; font-size:15px;">Category</h4>
+    <h4 style="font-family: Josefin Sans; text-align: center; font-size:15px;">Szczegóły kategorii</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt style="font-family:Poppins; font-size:15px;">
-            @Html.DisplayNameFor(model => model.Name)
+            Nazwa kategorii
         </dt>
 
         <dd>
@@ -25,11 +25,11 @@
         </dd>
 
         <dt style="font-family:Poppins; font-size:15px;">
-            @Html.DisplayNameFor(model => model.Hidden)
+            Ukryta
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Hidden)
+            @(Model.Hidden ? "Tak" : "Nie")
         </dd>
 
     </dl>
@@ -37,8 +37,6 @@
     <a class="btn btn-primary" href="/Categories/GeneratePDF/@Model.Id">
         Generuj cennk w PDF
     </a>
+    @Html.ActionLink("Edytuj", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Powró do listy kategorii", "Index", null, new { @class = "btn btn-primary" })
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

@@ -1,7 +1,7 @@
 ﻿@model SportsStore.Models.Product
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Produkt";
 }
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -10,83 +10,86 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
 </head>
-<h2 style="font-family: Poppins; font-weight:700;">Details</h2>
+<h2 style="font-family: Poppins; font-weight:700;">Szczegóły produktu</h2>
 
 <div>
-    <h4 style="text-align:center;">Product</h4>
     <hr />
-    <table class="table table-bordered col-lg-8" >
+    <table class="table table-bordered col-lg-8">
         <tr>
             <th style="background-color:#323232;color:white; width:30px;">
-                @Html.DisplayNameFor(model => model.Name)
+                Nazwa produktu
             </th>
-        <th>
-            @Html.DisplayFor(model => model.Name)
-        </th>
+            <th>
+                @Html.DisplayFor(model => model.Name)
+            </th>
         </tr>
         <tr>
             <th style="background-color:#323232; color:white; width:30px;">
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayFor(model => model.Price)
-        </th>
-            </tr>
+               Cena
+            </th>
+            <th>
+                @Html.DisplayFor(model => model.Price)
+            </th>
+        </tr>
         <tr>
             <th style="background-color:#323232; color:white; width:30px;">
-                @Html.DisplayNameFor(model => model.Picture)
+                Zdjęcie
             </th>
-        <th>
-           <img src="@Model.Picture"/>
-        </th>
-            </tr>
+            <th>
+                <img src="@Model.Picture" />
+            </th>
+        </tr>
         <tr>
-        <th style="background-color:#323232; color:white; width:30px;">
-            @Html.DisplayNameFor(model => model.Hidden)
-        </th>
-        <th>
-            @Html.DisplayFor(model => model.Hidden)
-        </th>
-            </tr>
+            <th style="background-color:#323232; color:white; width:30px;">
+                Ukryty
+            </th>
+            <th>
+                @(Model.Hidden ? "Tak" : "Nie")
+            </th>
+        </tr>
         <tr>
-        <th style="background-color:#323232; color:white; width:30px;">
-            @Html.DisplayNameFor(model => model.Producer)
-        </th>
+            <th style="background-color:#323232; color:white; width:30px;">
+                Producent
+            </th>
 
-        <th>
-            @Html.DisplayFor(model => model.Producer)
-        </th>
-            </tr>
+            <th>
+                @Html.DisplayFor(model => model.Producer)
+            </th>
+        </tr>
         <tr>
-        <th style="background-color:#323232; color:white; width:30px;">
-            @Html.DisplayNameFor(model => model.Category.Name)
-        </th>
+            <th style="background-color:#323232; color:white; width:30px;">
+                Nazwa kategorii
+            </th>
 
-        <th>
-            @Html.DisplayFor(model => model.Category.Name)
-        </th>
-            </tr>
+            <th>
+                @Html.DisplayFor(model => model.Category.Name)
+            </th>
+        </tr>
         <tr>
-        <th style="background-color:#323232; color:white; width:30px;">
-            @Html.DisplayNameFor(model => model.ShortDescription)
-        </th>
+            <th style="background-color:#323232; color:white; width:30px;">
+                Krótki opis
+            </th>
 
-        <th>
-            @Html.DisplayFor(model => model.ShortDescription)
-        </th>
-            </tr>
+            <th>
+                @Html.DisplayFor(model => model.ShortDescription)
+            </th>
+        </tr>
         <tr>
-        <th style="background-color:#323232; color:white; width:30px;">
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
+            <th style="background-color:#323232; color:white; width:30px;">
+                Opis
+            </th>
 
-        <th>
-            @Html.Raw(Model.Description)
-        </th>
-            </tr>
+            <th>
+                @Html.Raw(Model.Description)
+            </th>
+        </tr>
     </table>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @if (User.IsInRole("admin"))
+    {
+        @Html.ActionLink("Edytuj", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+    }
+   
+    @Html.ActionLink("Powrót to listy produktów", "List","Store", null, new { @class = "btn btn-primary" })
 </p>

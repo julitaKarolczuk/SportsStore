@@ -1,7 +1,7 @@
 ﻿@using SportsStore.Models
 @model LoginViewModel
 @{
-    ViewBag.Title = "Log in";
+    ViewBag.Title = "Logowanie";
 }
 
 <head>
@@ -17,7 +17,7 @@
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                <h4 style="font-family: Josefin Sans; margin-left: 1.5em;">Use a local account to log in.</h4>
+                <h4 style="font-family: Josefin Sans; margin-left: 1.5em;">Formularz logowania do sklepu.</h4>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    <label class="col-md-2 control-label">Hasło</label>
                     <div class="col-md-7">
                         @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
@@ -38,28 +38,18 @@
                     <div class="col-md-offset-2 col-md-10">
                         <div class="checkbox">
                             @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
+                            <label for="RememberMe">Pamiętaj mnie?</label>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Log in" class="btn btn-default" />
+                        <input type="submit" value="Zaloguj" class="btn btn-default" style="margin-right:20px" />
+                        @Html.ActionLink("Utwórz nowe konto", "Register", null, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Zapomniałeś/aś hasła?", "ForgotPassword", null, new { @class = "btn btn-warning" ,@style="margin-left:20px"})
                     </div>
                 </div>
-                <p>
-                    @Html.ActionLink("Register as a new user", "Register")
-                </p>
-                @* Enable this once you have account confirmation enabled for password reset functionality
-                    <p>
-                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>*@
             }
-        </section>
-    </div>
-    <div class="col-md-4">
-        <section id="socialLoginForm" style="margin-right: 1.2em; font-family:Josefin Sans; font-size:17px;">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
         </section>
     </div>
 </div>

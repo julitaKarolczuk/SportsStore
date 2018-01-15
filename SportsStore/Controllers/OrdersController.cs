@@ -15,6 +15,7 @@ using SportsStore.Helpers;
 
 namespace SportsStore.Controllers
 {
+    [Authorize]
     public class OrdersController : Controller
     {
         private Entities db = new Entities();
@@ -29,12 +30,27 @@ namespace SportsStore.Controllers
         // GET: Orders
         public ActionResult Index()
         {
-            var orders = db.Orders.Include(o => o.AspNetUser);
+            var userId = User.Identity.GetUserId();
+            var orders = db.Orders.Where(o=>o.UserId == userId);
             return View(orders.ToList());
         }
 
         // GET: Orders/Details/5
         public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Order order = db.Orders.Find(id);
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+            return View(order);
+        }
+
+        public ActionResult DetailsAdmin(int? id)
         {
             if (id == null)
             {
@@ -160,7 +176,7 @@ namespace SportsStore.Controllers
                 if (!string.IsNullOrEmpty(receiverEmail))
                     EmailsHelper.SendEmail(receiverEmail, "Zmiana statusu zamówienia", $"Status Twojego zamówienia został zmieniony z '{oldStatus}' na '{order.Status}'");
 
-                return RedirectToAction("Index");
+                return RedirectToAction("IndexAdmin");
 
             }
             ViewBag.UserId = new SelectList(db.AspNetUsers, "Id", "Email", order.UserId);

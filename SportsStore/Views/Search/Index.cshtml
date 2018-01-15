@@ -10,55 +10,55 @@
 
 <h2 style="font-family: Poppins; font-weight:700; text-align: center;">Wyniki wyszukiwania</h2>
 
-@Html.ActionLink("Przejdź do wyszukiwania zaawansowanego", "Advanced", "Search")
+@Html.ActionLink("Przejdź do wyszukiwania zaawansowanego", "Advanced", "Search", null, new { @class = "btn btn-primary", @style = "margin-bottom:20px" })
 
-    <table class="table">
+<table class="table table-bordered">
+    <tr>
+        <th>
+            Nazwa
+        </th>
+        <th>
+            Cena
+        </th>
+        <th>
+            Zdjęcie
+        </th>
+        <th>
+            Producent
+        </th>
+        <th>
+            Krótki opis
+        </th>
+        <th>
+            Kategoria
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Picture)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Producer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ShortDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category.Name)
-            </th>
-            <th></th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <img class="productImg" src="@Url.Content(item.Picture)" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Producer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Szczegóły", "Details", "Products", new { id = item.Id }, new { @class = "btn btn-primary" })
+            </td>
         </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    <img class="productImg" src="@Url.Content(item.Picture)" />
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Producer)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ShortDescription)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category.Name)
-                </td>
-                <td>
-                    @Html.ActionLink("Details", "Details", "Products", new { id = item.Id }, null)
-                </td>
-            </tr>
-        }
-    </table>
+    }
+</table>

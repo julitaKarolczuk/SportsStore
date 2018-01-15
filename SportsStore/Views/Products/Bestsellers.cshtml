@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<KeyValuePair<SportsStore.Models.Product, int>>
 @{
-    ViewBag.Title = "Bestsellers";
+    ViewBag.Title = "Bestsellery";
 }
 <head>
     <link href="~/Content/MainLayout.css" rel="stylesheet" />
@@ -9,30 +9,30 @@
     <link href="https://fonts.googleapis.com/css?family=Acme|Antic+Slab|Boogaloo|Josefin+Sans:400,700,700i|Kavivanar|Poppins:400,600,600i,700,700i|Raleway:400,600,600i,700,700i,800,800i" rel="stylesheet"> 
 </head>
 
-<h2 class="tit">Bestsellers</h2>
+<h2 class="tit">Bestsellery</h2>
 <div class="table-responsive">
     <table class="table table-striped">
         <tr style="background-color:darkgray; font-family:Josefin Sans; font-size:15px; font-weight:700;">
             <th style="text-align:center;">
-                @Html.DisplayNameFor(model => model.Key.Name)
+                Nazwa produktu
             </th>
             <th style="text-align:center;">
-                @Html.DisplayNameFor(model => model.Key.Price)
+                Cena
             </th>
             <th style="text-align:center;">
-                @Html.DisplayNameFor(model => model.Key.Picture)
+                Zdjęcie
             </th>
             <th style="text-align:center;">
-                @Html.DisplayNameFor(model => model.Key.Producer)
+                Producent
             </th>
             <th style="text-align:center;">
-                @Html.DisplayNameFor(model => model.Key.ShortDescription)
+                Krótki opis
             </th>
             <th style="text-align:center;">
-                @Html.DisplayNameFor(model => model.Key.Category.Name)
+                Kategoria
             </th>
             <th style="text-align:center;">
-                <label>Ilość zakupionych</label>
+                Ilość zakupionych
             </th>
             <th></th>
         </tr>

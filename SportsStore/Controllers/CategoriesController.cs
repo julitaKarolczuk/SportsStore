@@ -14,6 +14,7 @@ using iTextSharp.text.pdf;
 
 namespace SportsStore.Controllers
 {
+    [Authorize]
     public class CategoriesController : Controller
     {
         private Entities db = new Entities();

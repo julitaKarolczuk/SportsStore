@@ -28,25 +28,25 @@
     </div>
 }
 
-<table class="table">
+<table class="table table-bordered">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Nazwa
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Price)
+            Cena
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Picture)
+            Zdjęcie
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Producer)
+            Producent
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ShortDescription)
+            Krótki opis
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Category.Name)
+            Kategoria
         </th>
         <th></th>
     </tr>
@@ -73,9 +73,8 @@
                 @Html.DisplayFor(modelItem => item.Category.Name)
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", "Products", new { id = item.Id }, null)
+                @Html.ActionLink("Szczegóły", "Details", "Products", new { id = item.Id }, new { @class = "btn btn-primary" })
             </td>
         </tr>
     }
 </table>
-

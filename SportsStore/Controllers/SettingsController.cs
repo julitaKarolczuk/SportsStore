@@ -12,6 +12,7 @@ using SportsStore.Common;
 
 namespace SportsStore.Controllers
 {
+    [Authorize]
     public class SettingsController : Controller
     {
         private Entities db = new Entities();

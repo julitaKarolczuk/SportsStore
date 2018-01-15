@@ -1,18 +1,17 @@
 ﻿@model SportsStore.Models.AspNetUser
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Uwuwanie klienta";
 }
 
-<h2>Delete</h2>
+<h2>Uwuwanie klienta</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Czy na pewno usunąć klienta?</h3>
 <div>
-    <h4>AspNetUser</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Email)
+            Email
         </dt>
 
         <dd>
@@ -20,7 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.EmailConfirmed)
+            Email potwierdzony?
         </dt>
 
         <dd>
@@ -28,23 +27,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PasswordHash)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PasswordHash)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SecurityStamp)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SecurityStamp)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
+            Numer telefonu
         </dt>
 
         <dd>
@@ -52,55 +35,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumberConfirmed)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TwoFactorEnabled)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TwoFactorEnabled)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LockoutEndDateUtc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LockoutEndDateUtc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LockoutEnabled)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LockoutEnabled)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AccessFailedCount)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AccessFailedCount)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
+            Adres
         </dt>
 
         <dd>
@@ -108,7 +43,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
+            Imię
         </dt>
 
         <dd>
@@ -116,7 +51,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LastName)
+            Nazwisko
         </dt>
 
         <dd>
@@ -124,7 +59,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Discount)
+            Zniżka
         </dt>
 
         <dd>
@@ -133,12 +68,13 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Usuń" class="btn btn-default" />
+            @Html.ActionLink("Powrót do listy klientów", "Index", null, new { @class = "btn btn-primary" })
         </div>
     }
 </div>

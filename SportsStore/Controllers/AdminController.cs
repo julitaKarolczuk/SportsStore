@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace SportsStore.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         Entities db = new Entities();

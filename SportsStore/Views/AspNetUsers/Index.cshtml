@@ -1,78 +1,68 @@
 ﻿@model IEnumerable<SportsStore.Models.AspNetUser>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista klientów";
 
 }
 
-    <head>
-        <link href="~/Content/MainLayout.css" rel="stylesheet" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Acme|Antic+Slab|Boogaloo|Josefin+Sans:400,700,700i|Kavivanar|Poppins:400,600,600i,700,700i|Raleway:400,600,600i,700,700i,800,800i" rel="stylesheet">
-    </head>
+<head>
+    <link href="~/Content/MainLayout.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Acme|Antic+Slab|Boogaloo|Josefin+Sans:400,700,700i|Kavivanar|Poppins:400,600,600i,700,700i|Raleway:400,600,600i,700,700i,800,800i" rel="stylesheet">
+</head>
 
-<h2 style="font-family: Poppins; font-weight:700;">Index</h2>
+<h2 style="font-family: Poppins; font-weight:700;">Lista klientów</h2>
 
-<p style="font-family: Josefin Sans; font-size:15px;">
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table table-bordered">
     <tr>
         <th style="text-align:center;">
-            @Html.DisplayNameFor(model => model.Email)
+            Imię
         </th>
         <th style="text-align:center;">
-            @Html.DisplayNameFor(model => model.PhoneNumber)
+            Nazwisko
         </th>
         <th style="text-align:center;">
-            @Html.DisplayNameFor(model => model.UserName)
+            Email
         </th>
         <th style="text-align:center;">
-            @Html.DisplayNameFor(model => model.Address)
+            Numer telefonu
         </th>
         <th style="text-align:center;">
-            @Html.DisplayNameFor(model => model.FirstName)
+            Adres
         </th>
         <th style="text-align:center;">
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th style="text-align:center;">
-            @Html.DisplayNameFor(model => model.Discount)
+            Zniżka
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.Discount)
-        </td>
-
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+            <td>
+                @Html.DisplayFor(modelItem => item.Discount)
+            </td>
+            <td>
+                @Html.ActionLink("Edytuj", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Usuń", "Delete", new { id = item.Id }, new { @class = "btn btn-primary" })
+            </td>
+        </tr>
+    }
 
 </table>

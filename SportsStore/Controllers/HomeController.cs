@@ -1,4 +1,6 @@
-﻿using SportsStore.Models;
+﻿using SportsStore.Common;
+using SportsStore.Helpers;
+using SportsStore.Models;
 using SportsStore.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -8,7 +10,6 @@ using System.Web.Mvc;
 
 namespace SportsStore.Controllers
 {
-    [Authorize]
     public class HomeController : Controller
     {
 
@@ -33,11 +34,24 @@ namespace SportsStore.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Contact(ContactForm contactForm)
         {
-            ViewBag.Message = "Your contact page.";
+            return View(contactForm);
+        }
 
-            return View();
+        [HttpPost]
+        public ActionResult Send(ContactForm contactForm)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Index", contactForm);
+            }
+            else
+            {
+                //send  email
+                EmailsHelper.SendEmail(db.Settings.FirstOrDefault(s => s.Key.Equals(Constant.ApplicationEmail, StringComparison.InvariantCultureIgnoreCase)).Value, "Formularz kontaktowy", ($"Zgłoszenie od {contactForm.FirstName} {contactForm.LastName} nr.tel: {contactForm.TextArea} o treści {contactForm.TextArea}"));
+                return RedirectToAction("Index", "Home");
+            }
         }
     }
 }

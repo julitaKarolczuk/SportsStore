@@ -15,6 +15,15 @@
 <div>
     <hr />
     <dl class="dl-horizontal">
+
+        <dt style="font-family: Raleway; font-size:18px; font-weight:700; ">
+            Zamawiający
+        </dt>
+
+        <dd style="font-family: Kavivanar; font-size:18px; ">
+            @Model.AspNetUser.FirstName @Model.AspNetUser.LastName (@Model.AspNetUser.Email)
+        </dd>
+
         <dt style="font-family: Raleway; font-size:18px; font-weight:700; ">
             @Html.DisplayNameFor(model => model.Status)
         </dt>
@@ -48,7 +57,7 @@
         </dd>
 
     </dl>
-    <table class="table">
+    <table class="table" style="text-align:center">
         <tr style=" background-color: darkgray;font-family: Poppins;font-size: 15px;font-weight: 700;text-align:center;">
             <td style="text-align:center;">
                 Obrazek
@@ -61,6 +70,9 @@
             </td>
             <td style="text-align:center;">
                 Cena
+            </td>
+            <td style="text-align:center;">
+                Razem
             </td>
         </tr>
         @foreach (var productOrder in Model.Order_Product)
@@ -75,10 +87,17 @@
                 <td>
                     @productOrder.Amount
                 </td>
+                <td>
+                    @productOrder.Product.Price
+                </td>
+                <td>
+                    @(productOrder.Product.Price * productOrder.Amount)
+                </td>
             </tr>
         }
     </table>
+    <p style="font-weight:600;font-size:20px;">Razem: @Model.Order_Product.Sum(x => x.Amount * x.Product.Price)</p>
 </div>
 <p>
-    @Html.ActionLink("Powrót do listy zamówień", "Index", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Powrót do listy zamówień", "IndexAdmin", null, new { @class = "btn btn-primary" })
 </p>

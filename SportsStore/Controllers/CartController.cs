@@ -18,7 +18,7 @@ namespace SportsStore.Controllers
         {
             var user = db.AspNetUsers.Find(User.Identity.GetUserId());
             var items = new List<CartItem>();
-            ViewBag.Discount = user.Discount;
+            ViewBag.Discount = user != null ? user.Discount : 0;
             if (Request.Cookies.AllKeys.Contains("Cart"))
             {
                 var cookie = Request.Cookies["Cart"];

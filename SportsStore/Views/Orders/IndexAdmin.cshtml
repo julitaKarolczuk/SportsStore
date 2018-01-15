@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<SportsStore.Models.Order>
 @{
-    ViewBag.Title = "IndexAdmin";
+    ViewBag.Title = "Zamowienia";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <head>
@@ -12,30 +12,37 @@
     <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
 </head>
 
-<h2>PanelAdmin</h2>
-<table class="table space">
-    <tr class="tr1">
+<h2>Wszystkie zamówienia</h2>
+
+<table class="table table-bordered">
+    <tr class="wiersz1">
         <th class="th2">
-            @Html.DisplayNameFor(model => model.Status)
+            Zamawiający
         </th>
         <th class="th2">
-            @Html.DisplayNameFor(model => model.Payment)
+            Status
         </th>
         <th class="th2">
-            @Html.DisplayNameFor(model => model.Shipment)
+            Metoda płatności
         </th>
         <th class="th2">
-            @Html.DisplayNameFor(model => model.Address)
+            Sposób dostawy
         </th>
         <th class="th2">
-            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+            Adres dostawy
+        </th>
+        <th>
+            Data zamóienia
         </th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.OrderByDescending(i => i.CreationDate))
     {
         <tr>
+            <td>
+                @item.AspNetUser.FirstName @item.AspNetUser.LastName (@item.AspNetUser.UserName)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
@@ -49,13 +56,14 @@
                 @Html.DisplayFor(modelItem => item.Address)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+                @item.CreationDate.ToString()
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", new { id = item.Id })
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                @Html.ActionLink("Szczegóły zamówienia", "DetailsAdmin", new { id = item.Id }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Edycja", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
             </td>
         </tr>
     }
+
 
 </table>
